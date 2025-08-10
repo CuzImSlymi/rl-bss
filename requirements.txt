@@ -1,0 +1,5 @@
+pyautogui
+torch
+numpy
+gym
+psutil

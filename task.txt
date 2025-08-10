@@ -1,0 +1,53 @@
+Create the MvP of an actual RL learning AI that I will implement in Bee Swarm Simulator. 
+
+## Key Requirements:
+
+### Actions & Controls:
+- The AI needs to be able to press: w, a, s, d, space (no rotation for MVP - too complex)
+- Use pyautogui for key press simulation
+- Action space: 5 basic actions (w/a/s/d/space) + idle state
+
+### Observation Space (Limited by no injection capabilities):
+- **Honey count**: Only accessible data - I'll implement GetHoneyFunction() myself that returns current honey amount
+- **Position tracking**: AI must estimate/track its own position since we can't inject
+- **Time-based data**: Episode timer, stuck detection counters
+- **Reward tracking**: Previous rewards for learning
+
+### Reward System:
+- **Primary reward**: Honey gained since last check (GetHoneyFunction called at episode start/end)
+- **Penalties**: Implement automatic detection for:
+  - No honey progress (getting stuck)
+  - Taking damage/dying (detected via honey loss or other indicators)  
+  - Wasting abilities (using space when not beneficial)
+  - Time-based penalties for inefficiency
+
+### Episode Management:
+- **Episode duration**: Flexible (you decide appropriate time)
+- **Reset mechanism**: Close Roblox completely and rejoin via AHK v2 deeplink: `run('roblox://placeId=1537690962')`
+- **Honey calculation**: GetHoneyFunction() called at start and end of episode to calculate total gain
+- This ensures consistent starting position and base rotation each episode
+
+### Technical Specifications:
+- **Language**: Python
+- **Code quality**: Clear, prodigy-level code structure
+- **Architecture**: Future scalable and modular design
+- **Creator**: Made by slymi
+- **Purpose**: MVP to commit to GitHub and secure the idea
+- **RL Algorithm**: Decent RL implementation that's easily changeable and customizable - should work immediately
+
+### Implementation Notes:
+- No game injection possible - all interactions via external methods
+- Screen scraping may be needed for additional game state detection
+- Must be plug-and-play ready for immediate testing
+- Structure should allow easy swapping of RL algorithms
+- Clean separation between environment, agent, and training logic
+
+### Deliverables:
+- Complete RL agent structure
+- Environment wrapper for game interactions  
+- Reward calculation system with penalties
+- Episode management with auto-restart
+- Training loop and model persistence
+- Clear documentation and extensible architecture
+
+**Goal**: Create a functional MVP that can learn to play Bee Swarm Simulator autonomously through reinforcement learning, optimizing for honey collection while avoiding common pitfalls.
